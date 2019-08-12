@@ -1,0 +1,180 @@
+:root {
+  --bgColor: #f5f5f5;
+  --btnColor: #6b9023;
+  --btnHoverColor: #4d6719;
+  --scoreField: #009eb3;
+  --light: #fff;
+  --dark: rgba(0, 0, 0, 0.87);
+  --rwdSize: calc(70px + 2vmin);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Overpass&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Overpass", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  background-color: var(--bgColor);
+  color: var(--dark);
+  text-align: center;
+}
+
+.App {
+  margin: auto;
+  max-width: 800px;
+}
+
+#Game {
+  margin: 32px 0;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: opacity 0.6s ease-in-out;
+  min-height: calc(100vh - 64px);
+}
+
+.Game-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+audio {
+  margin: 16px 0;
+}
+
+.tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.description {
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 22px;
+  }
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--rwdSize);
+  width: var(--rwdSize);
+  margin: 5px;
+  cursor: pointer;
+  border: 2px solid var(--scoreField);
+  border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .tile {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+.tile p {
+  z-index: 10;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+  .tile p {
+    font-size: 22px;
+  }
+}
+
+.tile::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-color: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.tile:hover::after {
+  background-color: rgba(0, 204, 204, 0.4);
+}
+
+.btn {
+  text-decoration: none;
+  color: var(--light);
+  background-color: var(--btnColor);
+  letter-spacing: 3px;
+  font-size: 28px;
+  outline: 0;
+  border: none;
+  border-radius: 8px;
+  display: block;
+  padding: 6px 16px;
+  margin: 16px auto;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--btnHoverColor);
+}
+
+.score {
+  font-size: 28px;
+  color: var(--light);
+  padding: 6px 16px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: var(--scoreField);
+}
+
+.emoji-container {
+  height: 85px;
+  margin: 16px 0;
+}
+
+.emoji-content {
+  display: flex;
+  animation-duration: 3s;
+}
+
+.emoji-content span {
+  font-size: 64px;
+}
+
+.emoji-content p {
+  line-height: 3;
+  font-size: 32px;
+  font-style: italic;
+}
+
+.results-svg {
+  width: 450px;
+  height: auto;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.results-svg-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
